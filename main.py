@@ -26,38 +26,24 @@ def get_weather_data(city="Ho Chi Minh City"):
             print(f"API Error: {data.get('message', 'Unknown error')}")
             return None
     except Exception as e:
-        print(f"Error fetching weather: {e}")
+        print(f"Lỗi lấy thông tin: {e}")
         return None
 
 def format_weather_message(weather_data):
-    """Tạo message thời tiết đẹp cho Discord"""
+    """Tạo message thời tiết cho Discord"""
     if not weather_data:
-        return "❌ Không thể lấy thông tin thời tiết lúc này."
-    
-    # Emoji theo thời tiết
-    weather_emoji = {
-        'clear': '☀️',
-        'clouds': '☁️',
-        'rain': '🌧️',
-        'drizzle': '🌦️',
-        'thunderstorm': '⛈️',
-        'snow': '❄️',
-        'mist': '🌫️'
-    }
-    
-    icon = weather_data['icon'][:2]  # Lấy 2 ký tự đầu của icon code
-    emoji = weather_emoji.get(icon, '🌤️')
+        return "Không thể lấy thông tin thời tiết lúc này."
     
     message = f"""
-🌤️ **THỜI TIẾT HÔM NAY - {datetime.now().strftime('%d/%m/%Y')}**
+**THỜI TIẾT - {datetime.now().strftime('%d/%m/%Y')}**
 
-📍 **Thành phố:** {weather_data['city']}
-{emoji} **Thời tiết:** {weather_data['description'].title()}
-🌡️ **Nhiệt độ:** {weather_data['temperature']}°C (cảm giác như {weather_data['feels_like']}°C)
-💧 **Độ ẩm:** {weather_data['humidity']}%
-💨 **Tốc độ gió:** {weather_data['wind_speed']} m/s
+**Thành phố:** {weather_data['city']}
+**Thời tiết:** {weather_data['description'].title()}
+**Nhiệt độ:** {weather_data['temperature']}°C (cảm giác như {weather_data['feels_like']}°C)
+**Độ ẩm:** {weather_data['humidity']}%
+**Tốc độ gió:** {weather_data['wind_speed']} m/s
 
-Have a great day! 🌈
+Have a great day! 
 """
     return message
 
@@ -66,7 +52,7 @@ def send_to_discord(message):
     webhook_url = os.getenv('DISCORD_WEBHOOK_URL')
     
     if not webhook_url:
-        print("Discord webhook URL not found!")
+        print("Không tìm thấy webhook URL.")
         return False
     
     payload = {
@@ -78,17 +64,17 @@ def send_to_discord(message):
     try:
         response = requests.post(webhook_url, json=payload)
         if response.status_code == 204:
-            print("Weather message sent successfully!")
+            print("Gửi tin nhắn thời tiết thành công!")
             return True
         else:
-            print(f"Failed to send message: {response.status_code}")
+            print(f"Lỗi khi gửi tin nhắn: {response.status_code}")
             return False
     except Exception as e:
-        print(f"Error sending to Discord: {e}")
+        print(f"Lỗi khi gửi tới Discord: {e}")
         return False
 
 def main():
-    """Hàm chính - lấy thời tiết và gửi Discord"""
+    """Hàm main - lấy dữ liệu thời tiết và gửi qua Discord"""
     print(f"Running weather bot at {datetime.now()}")
     
     # Lấy thông tin thời tiết
