@@ -10,15 +10,15 @@ Một bot Discord tự động gửi thông tin thời tiết hàng ngày lúc 7
 
 ## Công nghệ sử dụng
 - **Python 3.9+**
-- **OpenWeatherMap API** (miễn phí)
+- **OpenWeatherMap API** 
 - **Discord Webhooks**
-- **GitHub Actions** (scheduling)
+- **GitHub Actions**
 
 ## Cài đặt
 
 ### 1. Clone repository
 ```bash
-git clone https://github.com/yourusername/discord-weather-bot
+git clone https://github.com/longiot/discord-weather-bot
 cd discord-weather-bot
 ```
 
@@ -55,15 +55,5 @@ Sửa cron expression trong `.github/workflows/weather-bot.yml`:
 - cron: '0 0 * * *'  # 7:00 AM UTC+7 = 0:00 AM UTC
 ```
 
-## Demo
-![Weather Bot Demo](demo.png)
-
-## Đóng góp
-Mọi đóng góp đều được chào đón! Hãy tạo Pull Request hoặc Issue.
-
 ## License
 MIT License
-
-## Liên hệ
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Discord: yourdiscord#1234
