@@ -87,9 +87,9 @@ def main():
     success = send_to_discord(message)
     
     if success:
-        print("✅ Weather update sent successfully!")
+        print("Weather update sent successfully!")
     else:
-        print("❌ Failed to send weather update")
+        print("Failed to send weather update")
 
 if __name__ == "__main__":
     main()
