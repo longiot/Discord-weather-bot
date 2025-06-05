@@ -13,8 +13,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Deploy to Replit
-      uses: GhostWriters/replit-action@v1
-      with:
-        token: ${{ secrets.REPLIT_TOKEN }}
-        repl: ${{ secrets.REPLIT_PROJECT_URL }}
+    - name: Deploy via Replit webhook
+      run: |
+        curl -X POST "https://replit.com/data/web_repl_webhook/NutritiousAncientCubase" \
+        -H "Content-Type: application/json" \
+        -d '{"secret":"YOUR_SECRET","command":"git pull && python3 main.py"}'
