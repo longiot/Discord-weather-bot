@@ -54,6 +54,3 @@ Sửa cron expression trong `.github/workflows/weather-bot.yml`:
 ```yaml
 - cron: '0 0 * * *'  # 7:00 AM UTC+7 = 0:00 AM UTC
 ```
-
-## License
-MIT License
