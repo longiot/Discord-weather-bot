@@ -8,12 +8,6 @@ Một bot Discord tự động gửi thông tin thời tiết hàng ngày lúc 7
 - 🌧️ Mô tả thời tiết bằng tiếng Việt
 - 📍 Có thể thay đổi thành phố
 
-## Công nghệ sử dụng
-- **Python 3.9+**
-- **OpenWeatherMap API** 
-- **Discord Webhooks**
-- **GitHub Actions**
-
 ## Cài đặt
 
 ### 1. Clone repository
